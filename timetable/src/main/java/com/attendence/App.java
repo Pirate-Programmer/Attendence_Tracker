@@ -48,11 +48,11 @@ public class App
         App.attendence_row_limit = attendence.getLastRowNum();
         
 
-        //Get Day from User
+        
         Scanner input = new Scanner(System.in);
-        System.out.print("Day: ");
-        String toDay = input.next();
-        toDay = toDay.toLowerCase();
+        
+        String toDay = java.time.LocalDate.now().getDayOfWeek().toString();
+        System.out.println(toDay);
 
 
         //tracking the row number acc to the current day
@@ -83,15 +83,15 @@ public class App
         int attended_cell = 1;
         int total_cell = 2;
         int cell_limit = sheet.getRow(rowIdx).getLastCellNum(); //gives the actual cell number not the index
-        System.out.println("Cell Limit: "+cell_limit);
          while(cellIdx < cell_limit)
          {
-            System.out.print("attended "+sheet.getRow(rowIdx).getCell(cellIdx)+" [y/n/c]:");
+            String subject = sheet.getRow(rowIdx).getCell(cellIdx).toString();
+            System.out.print(subject+" [y/n/c]:");
             switch(input.next().charAt(0))
             {
                 case 'y':{
-                    App.setAttendence(attendence_Workbook, attendence, sheet.getRow(rowIdx).getCell(cellIdx).toString(),attended_cell);
-                    App.setAttendence(attendence_Workbook, attendence, sheet.getRow(rowIdx).getCell(cellIdx).toString(),total_cell);
+                    App.setAttendence(attendence_Workbook, attendence, subject,attended_cell);
+                    App.setAttendence(attendence_Workbook, attendence, subject,total_cell);
                     break;
                 }
                 case 'n':{

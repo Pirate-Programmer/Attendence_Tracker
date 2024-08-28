@@ -51,8 +51,8 @@ public class App
         
         Scanner input = new Scanner(System.in);
         
-        String toDay = java.time.LocalDate.now().getDayOfWeek().toString();
-        System.out.println(toDay);
+        String toDay = input.next();
+
 
 
         //tracking the row number acc to the current day
@@ -61,7 +61,7 @@ public class App
         for(int row = 0, end = sheet.getLastRowNum(); row <= end; row++)
         {
             //iterating throught the days cell to find the current day
-            if(sheet.getRow(row).getCell(0).toString().equals(toDay))
+            if(sheet.getRow(row).getCell(0).toString().equals(toDay.toUpperCase()))
             {
                 rowIdx = row;
                 break;

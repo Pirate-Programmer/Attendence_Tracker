@@ -2,6 +2,8 @@ package com.attendence;
 
 import java.util.*;
 import java.io.*;
+import java.time.*;
+
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -50,8 +52,19 @@ public class App
 
         
         Scanner input = new Scanner(System.in);
-        
-        String toDay = input.next();
+        System.out.print("Get_ ToDay[y/n]: ");
+        String toDay = new String();
+        switch(input.next().charAt(0))
+        {
+            case 'y' :
+                toDay = LocalDate.now().getDayOfWeek().name();
+                System.out.println("toDay: "+ toDay);
+                break;
+
+            case 'n':
+                toDay = input.next();
+        }
+
 
 
 
